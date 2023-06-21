@@ -1,44 +1,33 @@
 import cl from './Header.module.sass';
-import Logo from '../../assets/logo.svg';
-// import { Link } from 'react-router-dom';
-import Badge, { BadgeProps } from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
-import { IconButton, Input } from '@mui/material';
-import { ShoppingCart } from '@mui/icons-material';
+import { Input, Box } from '@mui/material';
+import CartButton from '../../components/UI/CartButton/CartButton';
+import Logo from '../../components/UI/Logo/Logo';
 
-const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    right: -3,
-    top: 13,
-    border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
-  },
-}));
-
-// const ariaLabel = { 'aria-label': 'description' };
-
-export default function Header() {
+export default function Header({ isDark }: { isDark: boolean }) {
   return (
     <header className={cl.header}>
-      <div>
-        {/* <Link to='./'> */}
-        <img src={Logo} className={cl.logo} alt='' />
-        {/* </Link> */}
-      </div>
-      <div className={cl.right}>
+      <Box sx={{ width: '100%' }}>
+        <Logo props={{ link: '/', isDark: isDark, size: '56px' }} />
+      </Box>
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
         <form>
           <Input
             placeholder='Search...'
             color='secondary'
-            inputProps={{ style: { color: 'white' } }}
+            inputProps={{ style: { color: 'white', width: '240px' } }}
           />
         </form>
-        <IconButton size={'small'} color={'secondary'} aria-label='cart'>
-          <StyledBadge badgeContent={5} max={9} color='secondary'>
-            <ShoppingCart fontSize='large' />
-          </StyledBadge>
-        </IconButton>
-      </div>
+        <CartButton
+          props={{
+            size: 'small',
+            color: 'primary',
+            badgeValue: 4,
+            badgeMaxValue: 9,
+            badgeColor: 'secondary',
+            iconSize: 'large',
+          }}
+        />
+      </Box>
     </header>
   );
 }
