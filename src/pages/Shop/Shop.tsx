@@ -11,10 +11,10 @@ export default function Shop() {
         minHeight: '100vh',
         backgroundColor: 'whitesmoke',
         padding: '0 40px',
-        display: 'flex',
         color: '#6f6e6e',
+        display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+
         alignItems: 'center',
       }}
       maxWidth={false}
