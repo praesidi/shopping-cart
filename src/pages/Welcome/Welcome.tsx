@@ -32,7 +32,7 @@ export default function Welcome() {
         }}
         maxWidth={false}
       >
-        <Header isDark={false} />
+        <Header isDark={true} />
         <Box
           sx={{
             display: 'flex',

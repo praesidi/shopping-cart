@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
-import URL from '../../../assets/logo.svg';
+import Image from '../../../assets/logo.svg';
 
 export default function Logo({ props }: any) {
-  const { isDark, link, size } = props;
+  const { isDark, size } = props;
   return (
-    <Link to={link}>
+    <Link to={'/'}>
       {isDark ? (
+        <img src={Image} height={size} alt='logo' />
+      ) : (
         <img
-          src={URL}
+          src={Image}
           height={size}
-          style={{ filter: 'brightness(0.1)' }}
+          style={{ filter: 'brightness(0.45)' }}
           alt='logo'
         />
-      ) : (
-        <img src={URL} height={size} alt='logo' />
       )}
     </Link>
   );
