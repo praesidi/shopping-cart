@@ -7,6 +7,7 @@ import backgroundImage from '../../assets/images/background/welcome-big.jpeg';
 
 // first container contains the background image
 // second contains backdrop filters for it
+// TODO: fix blank space on mobile
 export default function Welcome() {
 	return (
 		<Container
@@ -25,9 +26,8 @@ export default function Welcome() {
 		>
 			<Container
 				sx={{
-					width: '100%',
 					minHeight: '100vh',
-					padding: '0 24px',
+					// padding: '0 24px',
 					backdropFilter: 'blur(8px) brightness(0.5)',
 				}}
 				maxWidth={false}
