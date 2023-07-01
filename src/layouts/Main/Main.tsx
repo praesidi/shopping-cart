@@ -1,19 +1,31 @@
 import cl from './Main.module.sass';
 import { useState } from 'react';
+import { Container, Box, MenuItem, Typography, Paper } from '@mui/material';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
-import Paper from '@mui/material/Paper';
-import { Container, Box, MenuItem, Typography } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import CategoryList from '../../components/CategoryList/CategoryList';
 
-const Item = styled(Paper)(({ theme }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-	...theme.typography.body1,
-	padding: theme.spacing(1),
-	textAlign: 'center',
-	color: theme.palette.text.secondary,
-}));
+const product = {
+	id: 'pwVY4pSuAQ',
+	name: 'yamaha 1337',
+	price: 229,
+	weight: 4.3,
+	category: 'bass guitar',
+	sales: 32,
+	inStock: 12,
+	'release date': '12.12.2023',
+	packing: {
+		type: 'box',
+	},
+	photos: [
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FIbanez-String-Guitar-Handed-GSR200BK%2Fdp%2FB002BJHFFG&psig=AOvVaw2gZsV1gt5t2FkZK2-L2qbw&ust=1687801619072000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNCGjZL93v8CFQAAAAAdAAAAABAD',
+	],
+};
+
+// TODO: set sidebar width 100%, flex wrap for mobile devices
 
 export default function Main() {
 	const [sortBy, setSortBy] = useState('');
@@ -24,25 +36,34 @@ export default function Main() {
 			sx={{
 				display: 'flex',
 				justifyContent: 'space-evenly',
-				gap: '48px',
-				margin: '48px 0 80px',
+				padding: '0 24px',
+				margin: '40px 0 80px',
 			}}
+			disableGutters
 			maxWidth={false}
 		>
-			<Box className={cl.sidebar}>
+			{/* Sidebar */}
+			<Box
+				sx={{
+					marginRight: '24px',
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '30px',
+					minWidth: '20%',
+				}}
+			>
 				<Box>
 					Shop /{' '}
-					<Box
-						component={'span'}
-						style={{ fontWeight: 600, fontSize: '1.5em' }}
-					>
+					<Box component={'span'} sx={{ fontWeight: 600, fontSize: '1.5em' }}>
 						{currentCategory}
 					</Box>
 				</Box>
-				<Sidebar categories={['Guitars', 'Bass', 'Drums', 'Piano']} />
+				<CategoryList
+					categories={['All', 'Guitars', 'Bass', 'Drums', 'Piano']}
+				/>
 			</Box>
-			<Box className={cl.products}>
-				{/* TODO: remove select focus effect */}
+			{/* Main Container with Products */}
+			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
 				<Select
 					sx={{
 						width: '220px',
@@ -62,19 +83,23 @@ export default function Main() {
 					<MenuItem value='From cheap'>Price (from cheap)</MenuItem>
 					<MenuItem value='From expansive'>Price (from expansive)</MenuItem>
 				</Select>
-				<Grid
-					container
-					spacing={{ xs: 2, md: 3 }}
-					columns={{ xs: 4, sm: 8, md: 12 }}
-				>
-					{Array.from(Array(12)).map((_, index) => (
-						<Grid xs={12} md={6} key={index}>
-							<Item>
-								<div style={{ height: '200px' }}>{index}</div>
-							</Item>
-						</Grid>
-					))}
-				</Grid>
+				<ProductsGrid>
+					{Array.from(Array(4)).map((_, index) => {
+						return (
+							<Grid
+								xs={2}
+								md={6}
+								lg={4}
+								display='flex'
+								justifyContent='center'
+								alignItems='center'
+								key={index}
+							>
+								<ProductCard product={product} />
+							</Grid>
+						);
+					})}
+				</ProductsGrid>
 			</Box>
 		</Container>
 	);
