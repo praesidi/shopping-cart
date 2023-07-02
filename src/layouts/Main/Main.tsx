@@ -1,12 +1,13 @@
-import cl from './Main.module.sass';
 import { useState } from 'react';
-import { Container, Box, MenuItem, Typography, Paper } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Container, Box, MenuItem } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
+import SortSelect from '../../components/UI/SortSelect/SortSelect';
 import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
+
+const categories = ['All', 'Guitars', 'Bass', 'Drums', 'Piano'];
 
 const product = {
 	id: 'pwVY4pSuAQ',
@@ -26,6 +27,7 @@ const product = {
 };
 
 // TODO: set sidebar width 100%, flex wrap for mobile devices
+// TODO: add loading spinner
 
 export default function Main() {
 	const [sortBy, setSortBy] = useState('');
@@ -58,31 +60,11 @@ export default function Main() {
 						{currentCategory}
 					</Box>
 				</Box>
-				<CategoryList
-					categories={['All', 'Guitars', 'Bass', 'Drums', 'Piano']}
-				/>
+				<CategoryList categories={categories} />
 			</Box>
 			{/* Main Container with Products */}
 			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-				<Select
-					sx={{
-						width: '220px',
-						marginLeft: 'auto',
-						'&:focus': { backgroundColor: 'transparent' },
-					}}
-					displayEmpty
-					value={sortBy}
-					onChange={(e) => setSortBy(e.target.value)}
-					variant='standard'
-					defaultValue=''
-				>
-					<MenuItem value=''>
-						<em>Sort By</em>
-					</MenuItem>
-					<MenuItem value='Popularity'>Popularity</MenuItem>
-					<MenuItem value='From cheap'>Price (from cheap)</MenuItem>
-					<MenuItem value='From expansive'>Price (from expansive)</MenuItem>
-				</Select>
+				<SortSelect sortBy={sortBy} setSortBy={setSortBy} />
 				<ProductsGrid>
 					{Array.from(Array(4)).map((_, index) => {
 						return (
