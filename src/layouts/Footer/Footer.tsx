@@ -35,7 +35,7 @@ export default function Footer({ isDark }: { isDark: boolean }) {
 				<IconButton href='https://github.com/praesidi' target='_blank'>
 					<GitHub />
 				</IconButton>
-				<IconButton href='https://instagrem.com' target='_blank'>
+				<IconButton href='https://instagram.com' target='_blank'>
 					<Instagram />
 				</IconButton>
 				<IconButton href='https://facebook.com' target='_blank'>
