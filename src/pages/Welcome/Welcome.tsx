@@ -3,7 +3,7 @@ import { Button, Container, Box, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from 'react-router-dom';
 import Header from '../../layouts/Header/Header';
-import backgroundImage from '../../assets/images/background/welcome-big.jpeg';
+import backgroundImage from '../../assets/images/welcome.jpeg';
 
 // first container contains the background image
 // second contains backdrop filters for it
