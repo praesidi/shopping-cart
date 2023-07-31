@@ -27,10 +27,17 @@ export default function QuantityPicker({
 			) : (
 				<button onClick={() => decrement()}> - </button>
 			)}
-			<input type='number' min={min} max={max} value={value} name='quantity' />
+			<input
+				type='number'
+				min={min}
+				max={max}
+				value={value}
+				name='quantity'
+				readOnly
+			/>
 			{value >= max ? (
 				<button onClick={() => increment()} disabled>
-					-
+					+
 				</button>
 			) : (
 				<button onClick={() => increment()}> + </button>
