@@ -1,0 +1,28 @@
+// romoves arrows
+.container input::-webkit-outer-spin-button,
+.container input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+/* first line romoves arrows for Firefox */
+.container input[type=number]
+  -moz-appearance: textfield
+
+.container input
+  border: none
+  text-align: center
+  width: 40px
+
+.container input:focus,
+.container button:focus
+  outline: none
+
+.container button
+  transition: 0.3s
+  background: whitesmoke
+  font-weight: 400
+  border-radius: 3px
+  border: none
+
+.container button:hover
+  filter: brightness(0.9)
