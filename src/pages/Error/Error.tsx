@@ -1,48 +1,44 @@
 import { Link } from 'react-router-dom';
-import { Box, Typography } from '@mui/material';
+import { Container, Box, Button, Typography } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import image from '../../assets/images/error.png';
 
-// TODO: read erroe message and show an error screen for an each certain error
-
-export default function Error({ errorCase }: { errorCase: string }) {
-	switch (errorCase) {
-		case 'page not found':
-			return <PageNotFound />;
-		case 'product not found':
-			return <ProductNotFound />;
-		default:
-			return <UnknownError />;
-	}
-}
-
-function PageNotFound() {
+export default function Error() {
 	return (
-		<Box>
-			<Typography variant='h2'>Ooops... Something went wrong :(</Typography>
-			<Typography variant='body2'>
-				<Link to='/'>Return to the home page</Link>
-			</Typography>
-		</Box>
-	);
-}
-
-function ProductNotFound() {
-	return (
-		<Box>
-			<Typography variant='h2'>Ooops... Something went wrong :(</Typography>
-			<Typography variant='body2'>
-				<Link to='/'>Return to the home page</Link>
-			</Typography>
-		</Box>
-	);
-}
-
-function UnknownError() {
-	return (
-		<Box>
-			<Typography variant='h2'>Ooops... Something went wrong :(</Typography>
-			<Typography variant='body2'>
-				<Link to='/'>Return to the home page</Link>
-			</Typography>
-		</Box>
+		<Container
+			sx={{
+				width: '100vw',
+				height: '100vh',
+				backgroundColor: 'whitesmoke',
+				color: '#6f6e6e',
+			}}
+			maxWidth={false}
+		>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center',
+					alignItems: 'center',
+					gap: '20px',
+					height: '100%',
+				}}
+			>
+				<img src={image} alt='error illustration' height={400} />
+				<Typography variant='h2'>Ooops... Something went wrong :(</Typography>
+				<Typography variant='body2'>
+					<Link to='/products'>
+						<Button
+							variant='outlined'
+							fullWidth={false}
+							color='secondary'
+							startIcon={<ArrowBackIcon />}
+						>
+							return to the shop page
+						</Button>
+					</Link>
+				</Typography>
+			</Box>
+		</Container>
 	);
 }
