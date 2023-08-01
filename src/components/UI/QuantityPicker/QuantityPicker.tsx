@@ -1,4 +1,4 @@
-import cl from './QuantityPicker.module.sass';
+import styles from './QuantityPicker.module.sass';
 import { useState } from 'react';
 
 export default function QuantityPicker({
@@ -19,7 +19,7 @@ export default function QuantityPicker({
 	};
 
 	return (
-		<span className={cl.container}>
+		<span className={styles.container}>
 			{value <= min ? (
 				<button onClick={() => decrement()} disabled>
 					-
