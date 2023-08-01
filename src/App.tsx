@@ -13,7 +13,7 @@ export default function App() {
 			<Route path='/' element={<Welcome />} />
 			<Route path='/products' element={<Shop />} />
 			<Route path='/products/:id' element={<Product />} />
-			{/* <Route path='*' element={<Error />} /> */}
+			<Route path='*' element={<Error />} />
 		</Routes>
 	);
 }

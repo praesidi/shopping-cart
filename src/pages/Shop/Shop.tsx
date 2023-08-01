@@ -13,7 +13,6 @@ export default function Shop() {
 				color: '#6f6e6e',
 				display: 'flex',
 				flexDirection: 'column',
-
 				alignItems: 'center',
 			}}
 			maxWidth={false}

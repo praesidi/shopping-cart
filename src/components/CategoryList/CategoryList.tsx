@@ -4,7 +4,7 @@ import { useState } from 'react';
 export default function CategoryList({ categories }: { categories: string[] }) {
 	const [selectedIndex, setSelectedIndex] = useState(1);
 
-	const handleListItemClick = (
+	const handleClick = (
 		event: React.MouseEvent<HTMLDivElement, MouseEvent>,
 		index: number
 	) => {
@@ -17,7 +17,7 @@ export default function CategoryList({ categories }: { categories: string[] }) {
 					return (
 						<ListItemButton
 							selected={selectedIndex === index}
-							onClick={(event) => handleListItemClick(event, index)}
+							onClick={(event) => handleClick(event, index)}
 							key={index}
 						>
 							<ListItemText primary={item} />
