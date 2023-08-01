@@ -1,20 +1,12 @@
 import Header from '../../layouts/Header/Header';
 import Footer from '../../layouts/Footer/Footer';
-import { Container, Box } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import ProductGallery from '../../components/ProductGallery/ProductGallery';
-import image1 from '../../assets/images/empty-cart.png';
-import image2 from '../../assets/images/error.png';
+import imagePlaceholder from '../../assets/images/image-placeholder.jpeg';
 
-export default function Product() {
-	const bocchies = [
-		image1,
-		image2,
-		'https://swiperjs.com/demos/images/nature-1',
-		'https://swiperjs.com/demos/images/nature-2',
-		'https://swiperjs.com/demos/images/nature-3',
-		'https://swiperjs.com/demos/images/nature-4',
-	];
+export default function Product(props: any) {
+	const imagesDefault = [imagePlaceholder, imagePlaceholder];
 
 	return (
 		<Container
@@ -46,12 +38,21 @@ export default function Product() {
 						<Box
 							sx={{ height: '500px', backgroundColor: '#fff', padding: '8px' }}
 						>
-							<ProductGallery images={bocchies} />
+							<ProductGallery
+								images={props.image ? props.image : imagesDefault}
+							/>
 						</Box>
 					</Grid>
 					<Grid xs={6} md={4}>
-						<Box>Title</Box>
-						<Box>Description</Box>
+						<Box>
+							<Typography variant='h1'>{props.title}</Typography>
+							<Typography variant='subtitle1'>{props.category}</Typography>
+						</Box>
+						<Box>
+							<Typography variant='h2'>
+								<Typography variant='body1'>{props.description}</Typography>
+							</Typography>
+						</Box>
 					</Grid>
 				</Grid>
 			</Container>
