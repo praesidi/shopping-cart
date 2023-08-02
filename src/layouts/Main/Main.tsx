@@ -13,17 +13,8 @@ const product = {
 	id: 'pwVY4pSuAQ',
 	name: 'yamaha 1337',
 	price: 229,
-	weight: 4.3,
 	category: 'bass guitar',
-	sales: 32,
-	inStock: 12,
-	'release date': '12.12.2023',
-	packing: {
-		type: 'box',
-	},
-	photos: [
-		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FIbanez-String-Guitar-Handed-GSR200BK%2Fdp%2FB002BJHFFG&psig=AOvVaw2gZsV1gt5t2FkZK2-L2qbw&ust=1687801619072000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNCGjZL93v8CFQAAAAAdAAAAABAD',
-	],
+	photos: ['https://images.static-thomann.de/pics/bdb/147148/13010524_800.jpg'],
 };
 
 // TODO: set sidebar width 100%, flex wrap for mobile devices
