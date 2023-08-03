@@ -2,7 +2,7 @@ import { Box, List, ListItemButton, ListItemText } from '@mui/material';
 import { useState } from 'react';
 
 export default function CategoryList({ categories }: { categories: string[] }) {
-	const [selectedIndex, setSelectedIndex] = useState(1);
+	const [selectedIndex, setSelectedIndex] = useState(0);
 
 	const handleClick = (
 		event: React.MouseEvent<HTMLDivElement, MouseEvent>,
