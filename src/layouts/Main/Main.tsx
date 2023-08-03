@@ -3,7 +3,6 @@ import { Container, Box, MenuItem } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import SortSelect from '../../components/UI/SortSelect/SortSelect';
-import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
 
@@ -56,7 +55,11 @@ export default function Main() {
 			{/* Main Container with Products */}
 			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
 				<SortSelect sortBy={sortBy} setSortBy={setSortBy} />
-				<ProductsGrid>
+				<Grid
+					container
+					columns={{ xs: 2, md: 12, lg: 12 }}
+					spacing={{ xs: 2, md: 3, lg: 4 }}
+				>
 					{Array.from(Array(4)).map((_, index) => {
 						return (
 							<Grid
@@ -72,7 +75,7 @@ export default function Main() {
 							</Grid>
 						);
 					})}
-				</ProductsGrid>
+				</Grid>
 			</Box>
 		</Container>
 	);
