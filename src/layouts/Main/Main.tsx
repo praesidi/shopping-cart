@@ -19,9 +19,32 @@ const product = {
 // TODO: set sidebar width 100%, flex wrap for mobile devices
 // TODO: add loading spinner
 
+interface Product {
+	id: number;
+	title: string;
+	category: string;
+	price: number;
+	description: string;
+}
+
 export default function Main() {
 	const [sortBy, setSortBy] = useState('');
-	const [currentCategory, setCurrentCategory] = useState('All');
+	const [currentCategory, setCurrentCategory] = useState('all');
+	const [productCategories, setProductCategories] = useState(['all']);
+
+	const { data: categories } = useFetch(
+		'https://fakestoreapi.com/products/categories'
+	);
+
+	const {
+		data: products,
+		isLoading,
+		error,
+	} = useFetch('https://fakestoreapi.com/products');
+
+	isLoading ? <CircularProgress color='secondary' /> : null;
+
+	error ? <h1>Something went wrong :( Try to reload the page!</h1> : null;
 
 	return (
 		<Container
