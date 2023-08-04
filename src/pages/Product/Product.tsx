@@ -1,5 +1,7 @@
 import Header from '../../layouts/Header/Header';
 import Footer from '../../layouts/Footer/Footer';
+import ProductGallery from '../../components/ProductGallery/ProductGallery';
+import imagePlaceholder from '../../assets/images/image-placeholder.jpeg';
 import {
 	Container,
 	Box,
@@ -10,12 +12,8 @@ import {
 import Grid from '@mui/material/Unstable_Grid2';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ProductGallery from '../../components/ProductGallery/ProductGallery';
-import imagePlaceholder from '../../assets/images/image-placeholder.jpeg';
 import useFetch from '../../hooks/useFetch';
-import { Link, useLocation, useParams } from 'react-router-dom';
-
-// TODO: check how responsive pages are
+import { Link, useParams } from 'react-router-dom';
 
 export default function Product() {
 	const imagesDefault = [imagePlaceholder];
@@ -25,7 +23,13 @@ export default function Product() {
 		data: product,
 		isLoading,
 		error,
+	}: {
+		data: any;
+		isLoading: boolean;
+		error: string | null;
 	} = useFetch(`https://fakestoreapi.com/products/${params.id}`);
+
+	console.log(product);
 
 	isLoading ? <CircularProgress color='secondary' /> : null;
 
