@@ -1,25 +1,36 @@
 import Header from '../../layouts/Header/Header';
 import Footer from '../../layouts/Footer/Footer';
-import { Container, Box, Typography, Button } from '@mui/material';
+import {
+	Container,
+	Box,
+	Typography,
+	Button,
+	CircularProgress,
+} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ProductGallery from '../../components/ProductGallery/ProductGallery';
 import imagePlaceholder from '../../assets/images/image-placeholder.jpeg';
-import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
-export default function Product({
-	title = 'Product Name',
-	category = 'Product Category',
-	description = 'Product description where we are trying to convince a customer to buy this useless piece of crap',
-	price = 69420,
-	image = [imagePlaceholder],
-}) {
+// TODO: check how responsive pages are
+
+export default function Product() {
 	const imagesDefault = [imagePlaceholder];
+	const params = useParams();
 
-	// TODO: check how responsive pages are
-	// FIXME: fix bug when image slider collapses if there is only 1 image (width fixes it in some way)
-	// bug above fixed by itself (still needs testing)
+	const {
+		data: product,
+		isLoading,
+		error,
+	} = useFetch(`https://fakestoreapi.com/products/${params.id}`);
+
+	isLoading ? <CircularProgress color='secondary' /> : null;
+
+	error ? <h1>Something went wrong :( Try to reload the page!</h1> : null;
+
 	return (
 		<Container
 			sx={{
@@ -61,7 +72,9 @@ export default function Product({
 								padding: '8px',
 							}}
 						>
-							<ProductGallery images={image ? image : imagesDefault} />
+							<ProductGallery
+								images={[product?.image] ? [product?.image] : imagesDefault}
+							/>
 						</Box>
 					</Grid>
 					<Grid xs={6} md={4}>
@@ -78,13 +91,13 @@ export default function Product({
 									variant='h1'
 									sx={{ fontSize: '3rem', fontWeight: 300 }}
 								>
-									{title}
+									{product?.title}
 								</Typography>
 								<Typography
 									variant='h2'
 									sx={{ fontSize: '1.5rem', fontWeight: 300 }}
 								>
-									{category}
+									{product?.category}
 								</Typography>
 							</Box>
 							<Box>
@@ -95,7 +108,7 @@ export default function Product({
 									Description
 								</Typography>
 								<Typography variant='body1' sx={{ fontSize: '1.2rem' }}>
-									{description}
+									{product?.description}
 								</Typography>
 							</Box>
 							<Box
@@ -131,7 +144,7 @@ export default function Product({
 											}}
 										>
 											{' '}
-											${price}
+											${product?.price}
 										</Box>
 									</Typography>
 								</Box>
