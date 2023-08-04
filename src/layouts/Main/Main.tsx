@@ -16,6 +16,7 @@ interface Product {
 	category: string;
 	price: number;
 	description: string;
+	image: string;
 }
 
 export default function Main() {
