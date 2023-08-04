@@ -32,7 +32,7 @@ export default function Header({ isDark }: { isDark: boolean }) {
 					props={{
 						size: 'small',
 						color: 'primary',
-						badgeValue: 4,
+						badgeValue: 0,
 						badgeMaxValue: 9,
 						badgeColor: 'secondary',
 						iconSize: 'large',

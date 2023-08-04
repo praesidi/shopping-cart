@@ -77,10 +77,6 @@ function EmptyCart() {
 }
 
 function FilledCart({ products }: { products: any }) {
-	// const total = products.reduce(
-	// 	(sum: number, current: any) => sum + current.price,
-	// 	0
-	// );
 	return (
 		<>
 			<Box

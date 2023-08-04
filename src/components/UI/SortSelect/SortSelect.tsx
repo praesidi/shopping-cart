@@ -23,7 +23,6 @@ export default function SortSelect({
 			<MenuItem value=''>
 				<em>Sort By</em>
 			</MenuItem>
-			<MenuItem value='Popularity'>Popularity</MenuItem>
 			<MenuItem value='From cheap'>Price (from cheap)</MenuItem>
 			<MenuItem value='From expansive'>Price (from expansive)</MenuItem>
 		</Select>

@@ -1,20 +1,11 @@
 import { useState } from 'react';
-import { Container, Box, MenuItem } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Container, Box, CircularProgress } from '@mui/material';
+// import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import SortSelect from '../../components/UI/SortSelect/SortSelect';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
-
-const categories = ['All', 'Guitars', 'Bass', 'Drums', 'Piano'];
-
-const product = {
-	id: 'pwVY4pSuAQ',
-	name: 'yamaha 1337',
-	price: 229,
-	category: 'bass guitar',
-	photos: ['https://images.static-thomann.de/pics/bdb/147148/13010524_800.jpg'],
-};
+import useFetch from '../../hooks/useFetch';
 
 // TODO: set sidebar width 100%, flex wrap for mobile devices
 // TODO: add loading spinner
@@ -69,7 +60,14 @@ export default function Main() {
 			>
 				<Box>
 					Shop /{' '}
-					<Box component={'span'} sx={{ fontWeight: 600, fontSize: '1.5em' }}>
+					<Box
+						component={'span'}
+						sx={{
+							fontWeight: 600,
+							fontSize: '1.5em',
+							textTransform: 'capitalize',
+						}}
+					>
 						{currentCategory}
 					</Box>
 				</Box>
@@ -83,7 +81,7 @@ export default function Main() {
 					columns={{ xs: 2, md: 12, lg: 12 }}
 					spacing={{ xs: 2, md: 3, lg: 4 }}
 				>
-					{Array.from(Array(4)).map((_, index) => {
+					{(products as Product[] | null)?.map((product) => {
 						return (
 							<Grid
 								xs={2}
@@ -92,7 +90,7 @@ export default function Main() {
 								display='flex'
 								justifyContent='center'
 								alignItems='center'
-								key={index}
+								key={product?.id}
 							>
 								<ProductCard product={product} />
 							</Grid>
