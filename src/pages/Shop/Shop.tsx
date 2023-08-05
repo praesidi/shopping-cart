@@ -89,7 +89,11 @@ export default function Shop() {
 							{currentCategory}
 						</Box>
 					</Box>
-					<CategoryList categories={categories} onSelect={setCurrentCategory} />
+					<CategoryList
+						categories={categories}
+						currentCategory={currentCategory}
+						setCurrentCategory={setCurrentCategory}
+					/>
 				</Box>
 				{/* Main Container with Products */}
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>

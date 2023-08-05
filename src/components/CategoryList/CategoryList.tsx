@@ -1,26 +1,23 @@
 import { Box, List, ListItemButton, ListItemText } from '@mui/material';
-import { useEffect, useState } from 'react';
 
 export default function CategoryList({
 	categories,
-	onSelect,
+	currentCategory,
+	setCurrentCategory,
 }: {
 	categories: string[] | null;
-	onSelect: any;
+	currentCategory: string;
+	setCurrentCategory: any;
 }) {
-	const [selectedIndex, setSelectedIndex] = useState(0);
-
-	const handleClick = (
-		event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-		index: number
-	) => {
-		setSelectedIndex(index);
-		onSelect(categories?.[index]);
-	};
-
 	if (!categories?.includes('all')) {
 		categories?.unshift('all');
 	}
+
+	const currentCategoryIndex = categories?.indexOf(currentCategory);
+
+	const handleClick = (index: number) => {
+		setCurrentCategory(categories?.[index]);
+	};
 
 	return (
 		<Box>
@@ -28,8 +25,8 @@ export default function CategoryList({
 				{categories?.map((item, index) => {
 					return (
 						<ListItemButton
-							selected={selectedIndex === index}
-							onClick={(event) => handleClick(event, index)}
+							selected={currentCategoryIndex === index}
+							onClick={() => handleClick(index)}
 							sx={{
 								textTransform: 'capitalize',
 							}}
