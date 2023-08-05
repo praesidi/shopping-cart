@@ -1,17 +1,11 @@
-function sortFromCheap(array: any[]) {
-	const sortedArray = array.sort((a, b) => {
-		return a.price - b.price;
-	});
-
-	return sortedArray;
+export default function sortFromPrice(fromCheap: boolean, array: any[] | null) {
+	if (fromCheap) {
+		return array?.slice(0).sort((a, b) => {
+			return a.price - b.price;
+		});
+	} else {
+		return array?.slice(0).sort((a, b) => {
+			return b.price - a.price;
+		});
+	}
 }
-
-function sortFromExpansive(array: any[]) {
-	const sortedArray = array.sort((a, b) => {
-		return b.price - a.price;
-	});
-
-	return sortedArray;
-}
-
-export { sortFromCheap, sortFromExpansive };
