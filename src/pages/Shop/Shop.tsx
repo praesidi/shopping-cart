@@ -8,6 +8,7 @@ import SortSelect from '../../components/UI/SortSelect/SortSelect';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import useFetch from '../../hooks/useFetch';
+import sortByPrice from '../../utils/sortByPrice';
 
 interface Product {
 	id: number;
@@ -22,6 +23,7 @@ export default function Shop() {
 	const [sortBy, setSortBy] = useState('');
 	const [currentCategory, setCurrentCategory] = useState('all');
 	const fetchURL = useRef('');
+	const sortedProducts = useRef<Product[]>();
 
 	const { data: categories } = useFetch(
 		'https://fakestoreapi.com/products/categories'
@@ -35,10 +37,13 @@ export default function Shop() {
 
 	const { data: products, isLoading, error } = useFetch(fetchURL.current);
 
-	console.log(isLoading);
+	if (sortBy === 'from cheap') {
+		sortedProducts.current = sortByPrice(true, products);
+	} else if (sortBy === 'from expansive') {
+		sortedProducts.current = sortByPrice(false, products);
+	}
 
 	if (isLoading) return <CircularProgress color='secondary' size={80} />;
-
 	if (error) return <ErrorMessage />;
 
 	return (
@@ -103,21 +108,23 @@ export default function Shop() {
 						columns={{ xs: 2, md: 12, lg: 12 }}
 						spacing={{ xs: 2, md: 3, lg: 4 }}
 					>
-						{(products as Product[] | null)?.map((product) => {
-							return (
-								<Grid
-									xs={2}
-									md={6}
-									lg={4}
-									display='flex'
-									justifyContent='center'
-									alignItems='center'
-									key={product?.id}
-								>
-									<ProductCard product={product} />
-								</Grid>
-							);
-						})}
+						{(sortBy === '' ? products : sortedProducts.current)?.map(
+							(product) => {
+								return (
+									<Grid
+										xs={2}
+										md={6}
+										lg={4}
+										display='flex'
+										justifyContent='center'
+										alignItems='center'
+										key={product?.id}
+									>
+										<ProductCard product={product} />
+									</Grid>
+								);
+							}
+						)}
 					</Grid>
 				</Box>
 			</Container>
