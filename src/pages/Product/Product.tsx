@@ -1,7 +1,3 @@
-import Header from '../../layouts/Header/Header';
-import Footer from '../../layouts/Footer/Footer';
-import ProductGallery from '../../components/ProductGallery/ProductGallery';
-import imagePlaceholder from '../../assets/images/image-placeholder.jpeg';
 import {
 	Container,
 	Box,
@@ -9,12 +5,16 @@ import {
 	Button,
 	CircularProgress,
 } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import ProductGallery from '../../components/ProductGallery/ProductGallery';
+import imagePlaceholder from '../../assets/images/image-placeholder.jpeg';
 import useFetch from '../../hooks/useFetch';
+import Grid from '@mui/material/Unstable_Grid2';
+import { ShoppingCart, ArrowBack } from '@mui/icons-material';
 import { Link, useParams } from 'react-router-dom';
 import { formatCurrency } from '../../utils/formatCurrency';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 export default function Product() {
 	const imagesDefault = [imagePlaceholder];
@@ -30,11 +30,9 @@ export default function Product() {
 		error: string | null;
 	} = useFetch(`https://fakestoreapi.com/products/${params.id}`);
 
-	console.log(product);
+	if (isLoading) return <CircularProgress color='secondary' size={80} />;
 
-	isLoading ? <CircularProgress color='secondary' /> : null;
-
-	error ? <h1>Something went wrong :( Try to reload the page!</h1> : null;
+	if (error) return <ErrorMessage />;
 
 	return (
 		<Container
@@ -65,7 +63,7 @@ export default function Product() {
 			>
 				<Box sx={{ marginBottom: '12px' }}>
 					<Link to={'/products'}>
-						<Button startIcon={<ArrowBackIcon />}>back to store</Button>
+						<Button startIcon={<ArrowBack />}>back to store</Button>
 					</Link>
 				</Box>
 				<Grid container columns={{ xs: 6, md: 8 }} spacing={3}>
@@ -161,7 +159,7 @@ export default function Product() {
 									variant='outlined'
 									color='secondary'
 									fullWidth
-									endIcon={<ShoppingCartIcon />}
+									endIcon={<ShoppingCart />}
 								>
 									Add to cart
 								</Button>

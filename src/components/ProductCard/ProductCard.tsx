@@ -1,4 +1,3 @@
-import { styled } from '@mui/material/styles';
 import {
 	Card,
 	Typography,
@@ -20,6 +19,8 @@ interface Product {
 	description: string;
 	image: string;
 }
+
+// TODO: make title font smaller if title is long
 
 export default function ProductCard({ product }: { product: Product }) {
 	return (
@@ -50,6 +51,7 @@ export default function ProductCard({ product }: { product: Product }) {
 						height: '50%',
 					}}
 					alt='green iguana'
+					loading='lazy'
 				/>
 				<CardContent
 					sx={{ display: 'flex', flexDirection: 'column', height: '50%' }}

@@ -1,4 +1,4 @@
-import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { Select, MenuItem } from '@mui/material';
 
 export default function SortSelect({
 	sortBy,
@@ -23,8 +23,8 @@ export default function SortSelect({
 			<MenuItem value=''>
 				<em>Sort By</em>
 			</MenuItem>
-			<MenuItem value='From cheap'>Price (from cheap)</MenuItem>
-			<MenuItem value='From expansive'>Price (from expansive)</MenuItem>
+			<MenuItem value='from cheap'>Price (from cheap)</MenuItem>
+			<MenuItem value='from expansive'>Price (from expansive)</MenuItem>
 		</Select>
 	);
 }
