@@ -14,6 +14,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useFetch from '../../hooks/useFetch';
 import { Link, useParams } from 'react-router-dom';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function Product() {
 	const imagesDefault = [imagePlaceholder];
@@ -145,10 +146,10 @@ export default function Product() {
 											sx={{
 												fontWeight: 300,
 												fontStyle: 'italic',
+												marginLeft: '8px',
 											}}
 										>
-											{' '}
-											${product?.price}
+											{formatCurrency(product?.price)}
 										</Box>
 									</Typography>
 								</Box>

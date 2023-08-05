@@ -10,6 +10,7 @@ import {
 } from '@mui/material/';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 interface Product {
 	id: number;
@@ -68,8 +69,7 @@ export default function ProductCard({ product }: { product: Product }) {
 						color='text.secondary'
 						sx={{ fontSize: '24px', marginTop: 'auto' }}
 					>
-						{'$'}
-						{product.price}
+						{formatCurrency(product.price)}
 					</Typography>
 				</CardContent>
 			</CardActionArea>
