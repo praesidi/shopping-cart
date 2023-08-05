@@ -1,16 +1,13 @@
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Container, Box, CircularProgress } from '@mui/material';
-// import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import SortSelect from '../../components/UI/SortSelect/SortSelect';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import useFetch from '../../hooks/useFetch';
-
-// TODO: set sidebar width 100%, flex wrap for mobile devices
 
 interface Product {
 	id: number;
@@ -24,16 +21,19 @@ interface Product {
 export default function Shop() {
 	const [sortBy, setSortBy] = useState('');
 	const [currentCategory, setCurrentCategory] = useState('all');
+	const fetchURL = useRef('');
 
 	const { data: categories } = useFetch(
 		'https://fakestoreapi.com/products/categories'
 	);
 
-	const {
-		data: products,
-		isLoading,
-		error,
-	} = useFetch('https://fakestoreapi.com/products');
+	if (currentCategory === 'all') {
+		fetchURL.current = 'https://fakestoreapi.com/products';
+	} else {
+		fetchURL.current = `https://fakestoreapi.com/products/category/${currentCategory}`;
+	}
+
+	const { data: products, isLoading, error } = useFetch(fetchURL.current);
 
 	console.log(isLoading);
 
@@ -83,12 +83,13 @@ export default function Shop() {
 								fontWeight: 600,
 								fontSize: '1.5em',
 								textTransform: 'capitalize',
+								display: 'block',
 							}}
 						>
 							{currentCategory}
 						</Box>
 					</Box>
-					<CategoryList categories={categories} />
+					<CategoryList categories={categories} onSelect={setCurrentCategory} />
 				</Box>
 				{/* Main Container with Products */}
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>

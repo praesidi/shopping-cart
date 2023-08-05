@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 
 export default function CategoryList({
 	categories,
+	onSelect,
 }: {
 	categories: string[] | null;
+	onSelect: any;
 }) {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -13,6 +15,7 @@ export default function CategoryList({
 		index: number
 	) => {
 		setSelectedIndex(index);
+		onSelect(categories?.[index]);
 	};
 
 	if (!categories?.includes('all')) {
