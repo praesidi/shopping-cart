@@ -1,6 +1,6 @@
 import { IconButton, Stack, Typography, Box } from '@mui/material';
 import { GitHub, Instagram, Facebook, LinkedIn } from '@mui/icons-material';
-import Logo from '../../components/UI/Logo/Logo';
+import Logo from '../UI/Logo/Logo';
 
 export default function Footer({ isDark }: { isDark: boolean }) {
 	return (
