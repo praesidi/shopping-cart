@@ -54,7 +54,15 @@ export default function ProductCard({ product }: { product: Product }) {
 				<CardContent
 					sx={{ display: 'flex', flexDirection: 'column', height: '50%' }}
 				>
-					<Typography gutterBottom variant='h5' sx={{ margin: 0 }}>
+					<Typography
+						gutterBottom
+						variant='h5'
+						sx={{
+							margin: 0,
+							fontSize: '1.3rem',
+							overflow: 'hidden',
+						}}
+					>
 						{product.title}
 					</Typography>
 					<Typography

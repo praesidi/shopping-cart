@@ -94,7 +94,7 @@ export default function Product() {
 							<Box>
 								<Typography
 									variant='h1'
-									sx={{ fontSize: '3rem', fontWeight: 300 }}
+									sx={{ fontSize: '2.5rem', fontWeight: 300 }}
 								>
 									{product?.title}
 								</Typography>
@@ -108,11 +108,14 @@ export default function Product() {
 							<Box>
 								<Typography
 									variant='h3'
-									sx={{ fontSize: '1.8rem', fontWeight: 400 }}
+									sx={{ fontSize: '1.6rem', margin: '8px 0', fontWeight: 300 }}
 								>
 									Description
 								</Typography>
-								<Typography variant='body1' sx={{ fontSize: '1.2rem' }}>
+								<Typography
+									variant='body1'
+									sx={{ fontSize: '1.2rem', fontWeight: 300 }}
+								>
 									{product?.description}
 								</Typography>
 							</Box>
