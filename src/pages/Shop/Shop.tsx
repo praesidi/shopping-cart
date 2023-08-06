@@ -4,7 +4,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { useState, useRef } from 'react';
 import { Container, Box, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import SortSelect from '../../components/UI/SortSelect/SortSelect';
+import SortingSelectionMenu from '../../components/UI/SortingSelectionMenu/SortingSelectionMenu';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import useFetch from '../../hooks/useFetch';

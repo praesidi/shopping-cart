@@ -1,6 +1,6 @@
 import { Select, MenuItem } from '@mui/material';
 
-export default function SortSelect({
+export default function SortingSelectionMenu({
 	sortBy,
 	setSortBy,
 }: {
