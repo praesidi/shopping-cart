@@ -29,14 +29,13 @@ export default function Header({ isDark }: { isDark: boolean }) {
 					/>
 				</form>
 				<CartButton
-					props={{
-						size: 'small',
-						color: 'primary',
-						badgeValue: 0,
-						badgeMaxValue: 9,
-						badgeColor: 'secondary',
-						iconSize: 'large',
-					}}
+					size='small'
+					color='primary'
+					badgeValue={0}
+					badgeMaxValue={9}
+					badgeColor='secondary'
+					iconSize='large'
+					onClick={toggleDrawer(true)}
 				/>
 			</Box>
 		</Box>

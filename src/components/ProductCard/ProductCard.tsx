@@ -42,7 +42,7 @@ export default function ProductCard({ product }: { product: Product }) {
 						padding: '5px',
 						height: '50%',
 					}}
-					alt='green iguana'
+					alt='product image'
 					loading='lazy'
 				/>
 				<CardContent

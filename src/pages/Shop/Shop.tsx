@@ -97,7 +97,7 @@ export default function Shop() {
 				</Box>
 				{/* Main Container with Products */}
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-					<SortSelect sortBy={sortBy} setSortBy={setSortBy} />
+					<SortingSelectionMenu sortBy={sortBy} setSortBy={setSortBy} />
 					<Grid
 						container
 						columns={{ xs: 2, md: 12, lg: 12 }}

@@ -19,11 +19,8 @@ export default function QuantityPicker(props: Props) {
 	};
 
 	return (
-		<span
-			className={styles.container}
-			style={{ fontSize: props.fontSize ? props.fontSize : '18px' }}
-		>
-			{value <= props.min ? (
+		<span className={styles.container} style={{ fontSize: fontSize }}>
+			{value <= min ? (
 				<button onClick={() => decrement()} disabled>
 					-
 				</button>
