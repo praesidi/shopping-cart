@@ -9,15 +9,10 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import useFetch from '../../hooks/useFetch';
 import sortByPrice from '../../utils/sortByPrice';
+import { Product } from '../../types';
 
-interface Product {
-	id: number;
-	title: string;
-	category: string;
-	price: number;
-	description: string;
-	image: string;
-}
+// TODO: do performance tests to improve UX
+// TODO: add loader when select a category
 
 export default function Shop() {
 	const [sortBy, setSortBy] = useState('');

@@ -10,15 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { formatCurrency } from '../../utils/formatCurrency';
-
-interface Product {
-	id: number;
-	title: string;
-	category: string;
-	price: number;
-	description: string;
-	image: string;
-}
+import { Product } from '../../types';
 
 // TODO: make title font smaller if title is long
 
