@@ -1,14 +1,16 @@
 import { Input, Box } from '@mui/material';
 import CartButton from '../../components/UI/CartButton/CartButton';
 import Logo from '../../components/UI/Logo/Logo';
-import { openCart, closeCart } from '../Cart/cartSlice';
-import { useDispatch } from 'react-redux';
+import { openCart, closeCart } from '../../app/features/cartDisplaySlice';
+import { productsInCart } from '../../app/features/cartProductsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Header({ isDark }: { isDark: boolean }) {
 	const inputStyling = isDark
 		? { style: { color: 'whitesmoke' } }
 		: { style: { color: '#6f6e6e' } };
 
+	const products = useSelector(productsInCart);
 	const dispatch = useDispatch();
 
 	const toggleDrawer =
@@ -56,7 +58,7 @@ export default function Header({ isDark }: { isDark: boolean }) {
 				<CartButton
 					size='small'
 					color='primary'
-					badgeValue={0}
+					badgeValue={products.length}
 					badgeMaxValue={9}
 					badgeColor='secondary'
 					iconSize='large'
