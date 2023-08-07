@@ -1,15 +1,20 @@
 import styles from './QuantityPicker.module.sass';
-import { useState } from 'react';
 
-interface Props {
+interface QuantityPicker {
 	min: number;
 	max: number;
+	value: number;
 	fontSize?: string;
+	setValue?: any;
 }
 
-export default function QuantityPicker(props: Props) {
-	const [value, setValue] = useState(1);
-
+export default function QuantityPicker({
+	min,
+	max,
+	fontSize = '1rem',
+	value,
+	setValue,
+}: QuantityPicker) {
 	const decrement = () => {
 		setValue(value - 1);
 	};
@@ -29,13 +34,13 @@ export default function QuantityPicker(props: Props) {
 			)}
 			<input
 				type='number'
-				min={props.min}
-				max={props.max}
+				min={min}
+				max={max}
 				value={value}
 				name='quantity'
 				readOnly
 			/>
-			{value >= props.max ? (
+			{value >= max ? (
 				<button onClick={() => increment()} disabled>
 					+
 				</button>
