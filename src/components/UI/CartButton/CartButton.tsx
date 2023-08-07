@@ -12,12 +12,19 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 	},
 }));
 
-export default function CartButton({ props }: any) {
-	const { size, color, badgeValue, badgeMaxValue, badgeColor, iconSize } =
-		props;
+export default function CartButton(props: any) {
+	const {
+		size,
+		color,
+		badgeValue,
+		badgeMaxValue,
+		badgeColor,
+		iconSize,
+		onClick,
+	} = props;
 
 	return (
-		<IconButton size={size} color={color} aria-label='cart'>
+		<IconButton size={size} color={color} aria-label='cart' onClick={onClick}>
 			<StyledBadge
 				badgeContent={badgeValue}
 				max={badgeMaxValue}

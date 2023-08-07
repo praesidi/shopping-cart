@@ -1,11 +1,33 @@
 import { Input, Box } from '@mui/material';
 import CartButton from '../../components/UI/CartButton/CartButton';
 import Logo from '../../components/UI/Logo/Logo';
+import { openCart, closeCart } from '../Cart/cartSlice';
+import { useDispatch } from 'react-redux';
 
 export default function Header({ isDark }: { isDark: boolean }) {
 	const inputStyling = isDark
-		? { style: { color: 'whitesmoke', width: '240px' } }
-		: { style: { color: '#6f6e6e', width: '240px' } };
+		? { style: { color: 'whitesmoke' } }
+		: { style: { color: '#6f6e6e' } };
+
+	const dispatch = useDispatch();
+
+	const toggleDrawer =
+		(open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+			if (
+				event &&
+				event.type === 'keydown' &&
+				((event as React.KeyboardEvent).key === 'Tab' ||
+					(event as React.KeyboardEvent).key === 'Shift')
+			) {
+				return;
+			}
+
+			if (open) {
+				dispatch(openCart());
+			} else {
+				dispatch(closeCart());
+			}
+		};
 
 	return (
 		<Box
