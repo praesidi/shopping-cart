@@ -43,13 +43,16 @@ export default function Header({ isDark }: { isDark: boolean }) {
 				<Logo props={{ isDark: isDark, size: '56px' }} />
 			</Box>
 			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-				<form>
+				<Box component={'form'} sx={{ width: { xs: '160px', sm: '240px' } }}>
 					<Input
 						placeholder='Search...'
 						color='secondary'
-						inputProps={{ ...inputStyling }}
+						fullWidth
+						inputProps={{
+							...inputStyling,
+						}}
 					/>
-				</form>
+				</Box>
 				<CartButton
 					size='small'
 					color='primary'

@@ -20,7 +20,9 @@ export default function Error() {
 			maxWidth={false}
 		>
 			<Box component='img' src={image} height={250} alt='error illustration' />
-			<Typography variant='h2'>Ooops... Something went wrong :(</Typography>
+			<Typography variant='h2' textAlign={'center'}>
+				Ooops... Something went wrong :(
+			</Typography>
 			<Typography variant='body2'>
 				<Link to='/products'>
 					<Button

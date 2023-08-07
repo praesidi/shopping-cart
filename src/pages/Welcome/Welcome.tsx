@@ -28,7 +28,6 @@ export default function Welcome() {
 			<Container
 				sx={{
 					minHeight: '100vh',
-					// padding: '0 24px',
 					backdropFilter: 'blur(8px) brightness(0.5)',
 				}}
 				maxWidth={false}
@@ -50,9 +49,8 @@ export default function Welcome() {
 						sx={{
 							fontFamily: "'Monoton', sans-serif",
 							textAlign: 'center',
-							fontSize: '4rem',
+							fontSize: { xs: '3rem', sm: '4rem' },
 							wordSpacing: '0.3rem',
-							// letterSpacing: '1.5',
 							marginBottom: '64px',
 							lineHeight: '1.4em',
 							padding: '0 16px',

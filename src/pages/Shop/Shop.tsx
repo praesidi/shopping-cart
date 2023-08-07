@@ -12,7 +12,6 @@ import sortByPrice from '../../utils/sortByPrice';
 import { Product } from '../../types';
 
 // TODO: do performance tests to improve UX
-// TODO: add loader when select a category
 
 export default function Shop() {
 	const [sortBy, setSortBy] = useState('');
@@ -61,6 +60,8 @@ export default function Shop() {
 					justifyContent: 'space-evenly',
 					padding: '0 24px',
 					margin: '40px 0 80px',
+					flexDirection: { xs: 'column', sm: 'row' },
+					flexWrap: { xs: 'wrap', sm: 'nowrap' },
 				}}
 				disableGutters
 				maxWidth={false}
@@ -68,11 +69,11 @@ export default function Shop() {
 				{/* Sidebar */}
 				<Box
 					sx={{
-						marginRight: '24px',
 						display: 'flex',
 						flexDirection: 'column',
 						gap: '30px',
 						minWidth: '20%',
+						marginRight: { xs: '0', sm: '24px' },
 					}}
 				>
 					<Box>
