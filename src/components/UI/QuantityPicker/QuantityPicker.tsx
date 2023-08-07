@@ -1,11 +1,13 @@
 import styles from './QuantityPicker.module.sass';
+import { Product } from '../../../types';
 
 interface QuantityPicker {
+	onAdd: any;
+	onRemove: any;
 	min: number;
 	max: number;
 	value: number;
 	fontSize?: string;
-	setValue?: any;
 }
 
 export default function QuantityPicker({
@@ -13,24 +15,17 @@ export default function QuantityPicker({
 	max,
 	fontSize = '1rem',
 	value,
-	setValue,
+	onAdd,
+	onRemove,
 }: QuantityPicker) {
-	const decrement = () => {
-		setValue(value - 1);
-	};
-
-	const increment = () => {
-		setValue(value + 1);
-	};
-
 	return (
 		<span className={styles.container} style={{ fontSize: fontSize }}>
 			{value <= min ? (
-				<button onClick={() => decrement()} disabled>
+				<button onClick={() => onRemove()} disabled>
 					-
 				</button>
 			) : (
-				<button onClick={() => decrement()}> - </button>
+				<button onClick={() => onRemove()}> - </button>
 			)}
 			<input
 				type='number'
@@ -41,11 +36,11 @@ export default function QuantityPicker({
 				readOnly
 			/>
 			{value >= max ? (
-				<button onClick={() => increment()} disabled>
+				<button onClick={() => onAdd()} disabled>
 					+
 				</button>
 			) : (
-				<button onClick={() => increment()}> + </button>
+				<button onClick={() => onAdd()}> + </button>
 			)}
 		</span>
 	);
