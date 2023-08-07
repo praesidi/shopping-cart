@@ -7,6 +7,7 @@ export default function useFetch(url: string) {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
+		setIsLoading(true);
 		axios
 			.get(url)
 			.then((response) => {
