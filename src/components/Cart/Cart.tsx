@@ -1,48 +1,72 @@
-import { Box, Button, IconButton, Typography } from '@mui/material';
-import image from '../../assets/images/empty-cart.png';
-import ClearIcon from '@mui/icons-material/Clear';
+import { Fragment } from 'react';
+import {
+	Box,
+	Button,
+	IconButton,
+	Typography,
+	SwipeableDrawer,
+} from '@mui/material';
+import { ArrowBack, ShoppingCartCheckout } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
+import { Product } from '../../types';
 import CartItem from '../CartItem/CartItem';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import image from '../../assets/images/empty-cart.png';
+import { formatCurrency } from '../../utils/formatCurrency';
+import {
+	openCart,
+	closeCart,
+	isOpen,
+} from '../../app/features/cartDisplaySlice';
+import { productsInCart } from '../../app/features/cartProductsSlice';
 
-// TODO: make cart to take whole width on mobile devices
+// FIXME: clicking outside of cart doesn't close it
 
-export default function Cart(props: any) {
-	function closeCart() {}
-	console.log(props);
+export default function Cart() {
+	const anchor = 'right';
+	const isCartOpen = useSelector(isOpen);
+	const products = useSelector(productsInCart);
+	const dispatch = useDispatch();
 
 	return (
-		<Box
-			sx={{
-				position: 'absolute',
-				width: '30vw',
-				height: '100vh',
-				padding: '10px',
-				overflow: 'scroll',
-				background: '#bbc9d6',
-				display: 'flex',
-				flexDirection: 'column',
-				zIndex: 9999,
-			}}
-		>
-			<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-				<IconButton
-					// onClick={() => closeCart()}
-					aria-label='delete'
-					size='medium'
-				>
-					<ClearIcon fontSize='medium' />
-				</IconButton>
-			</Box>
-			<Box textAlign={'center'}>
-				<Typography
-					variant='h1'
-					sx={{ fontSize: '2rem', textTransform: 'uppercase' }}
-				>
-					your cart
-				</Typography>
-			</Box>
-			{props.isEmpty ? <EmptyCart /> : <FilledCart products={props.products} />}
-		</Box>
+		<Fragment>
+			<SwipeableDrawer
+				anchor={anchor}
+				open={isCartOpen}
+				onClose={() => dispatch(openCart())}
+				onOpen={() => dispatch(closeCart())}
+				PaperProps={{
+					sx: { width: { xs: '100%', sm: '560px' }, p: '16px' },
+				}}
+			>
+				<Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+					{' '}
+					<IconButton
+						onClick={() => dispatch(closeCart())}
+						aria-label='delete'
+						size='medium'
+					>
+						<ArrowBack sx={{ fontSize: '1.8rem' }} />
+					</IconButton>
+				</Box>
+				<Box textAlign={'center'}>
+					<Typography
+						variant='h1'
+						sx={{
+							fontSize: '2rem',
+							textTransform: 'uppercase',
+							marginBottom: '24px',
+						}}
+					>
+						your cart
+					</Typography>
+				</Box>
+				{products.length < 1 ? (
+					<EmptyCart />
+				) : (
+					<FilledCart products={products} />
+				)}
+			</SwipeableDrawer>
+		</Fragment>
 	);
 }
 
@@ -62,12 +86,13 @@ function EmptyCart() {
 					component={'img'}
 					src={image}
 					alt='empty cart illustration'
-					width={'80%'}
+					height={'360px'}
 				></Box>
 				<Typography
 					variant='h4'
 					textTransform={'uppercase'}
 					fontSize={'1.3rem'}
+					mt={'16px'}
 				>
 					Your Cart is Empty
 				</Typography>
@@ -76,7 +101,8 @@ function EmptyCart() {
 	);
 }
 
-function FilledCart({ products }: { products: any }) {
+function FilledCart({ products }: { products: Product[] }) {
+	console.log(products);
 	return (
 		<>
 			<Box
@@ -89,17 +115,27 @@ function FilledCart({ products }: { products: any }) {
 					overflow: 'scroll',
 				}}
 			>
-				{/* {products.map(() => {})} */}
+				{[...new Set(products)].map((product: Product) => (
+					<CartItem product={product} key={product.id} />
+				))}
 			</Box>
 			<Box mt={'auto'}>
-				<Typography variant='h3' fontSize={'1.5rem'} mb={'20px'}>
-					Total: ${420.69}
+				<Typography
+					variant='h3'
+					fontSize={'1.5rem'}
+					color={'#545456'}
+					mb={'20px'}
+				>
+					Total:{' '}
+					{formatCurrency(
+						products.reduce((acc: number, curr: Product) => acc + curr.price, 0)
+					)}
 				</Typography>
 				<Button
 					variant='outlined'
 					fullWidth={true}
 					color='secondary'
-					endIcon={<ShoppingCartCheckoutIcon />}
+					endIcon={<ShoppingCartCheckout />}
 				>
 					Checkout
 				</Button>
