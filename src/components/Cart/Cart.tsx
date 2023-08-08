@@ -16,8 +16,8 @@ import {
 	openCart,
 	closeCart,
 	isOpen,
-} from '../../app/features/cartDisplaySlice';
-import { productsInCart } from '../../app/features/cartProductsSlice';
+} from '../../store/shoppingCart/cartDisplaySlice';
+import { productsInCart } from '../../store/shoppingCart/cartProductsSlice';
 
 // FIXME: clicking outside of cart doesn't close it
 

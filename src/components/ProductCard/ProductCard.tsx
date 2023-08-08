@@ -11,11 +11,9 @@ import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { Product } from '../../types';
-import { openCart } from '../../app/features/cartDisplaySlice';
-import { addToCart } from '../../app/features/cartProductsSlice';
+import { openCart } from '../../store/shoppingCart/cartDisplaySlice';
+import { addToCart } from '../../store/shoppingCart/cartProductsSlice';
 import { useDispatch } from 'react-redux';
-
-// TODO: make title font smaller if title is long
 
 export default function ProductCard({ product }: { product: Product }) {
 	const dispatch = useDispatch();

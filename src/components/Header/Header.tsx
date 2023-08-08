@@ -1,8 +1,8 @@
 import { Input, Box } from '@mui/material';
 import CartButton from '../../components/UI/CartButton/CartButton';
 import Logo from '../../components/UI/Logo/Logo';
-import { openCart, closeCart } from '../../app/features/cartDisplaySlice';
-import { productsInCart } from '../../app/features/cartProductsSlice';
+import { openCart, closeCart } from '../../store/shoppingCart/cartDisplaySlice';
+import { productsInCart } from '../../store/shoppingCart/cartProductsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Header({ isDark }: { isDark: boolean }) {

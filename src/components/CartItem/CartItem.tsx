@@ -6,7 +6,7 @@ import {
 	productsInCart,
 	addToCart,
 	removeFromCart,
-} from '../../app/features/cartProductsSlice';
+} from '../../store/shoppingCart/cartProductsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import getNumberOfProducts from '../../utils/getNumberOfProducts';
 
