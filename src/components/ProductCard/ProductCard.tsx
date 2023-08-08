@@ -11,10 +11,15 @@ import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { Product } from '../../types';
+import { openCart } from '../../app/features/cartDisplaySlice';
+import { addToCart } from '../../app/features/cartProductsSlice';
+import { useDispatch } from 'react-redux';
 
 // TODO: make title font smaller if title is long
 
 export default function ProductCard({ product }: { product: Product }) {
+	const dispatch = useDispatch();
+
 	return (
 		<Card
 			sx={{
@@ -82,6 +87,10 @@ export default function ProductCard({ product }: { product: Product }) {
 					variant='outlined'
 					color='secondary'
 					fullWidth={true}
+					onClick={() => {
+						dispatch(addToCart(product));
+						dispatch(openCart());
+					}}
 					endIcon={<ShoppingCartIcon />}
 				>
 					Buy
