@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import styles from './ProductGallery.module.sass';
 
-export default function ProductGallery(props: any) {
+export default function ProductGallery({ images }: { images: string[] }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
 	return (
@@ -29,7 +29,7 @@ export default function ProductGallery(props: any) {
 				modules={[FreeMode, Navigation, Thumbs]}
 				className={styles.mySwiper}
 			>
-				{props.images?.map((item: string, index: number) => (
+				{images?.map((item: string, index: number) => (
 					<SwiperSlide key={index}>
 						<img src={item} alt='product images' />
 					</SwiperSlide>
@@ -45,7 +45,7 @@ export default function ProductGallery(props: any) {
 				className={styles.mySwiper2}
 				style={{ height: '20%' }}
 			>
-				{props.images?.map((item: string, index: number) => (
+				{images?.map((item: string, index: number) => (
 					<SwiperSlide key={index}>
 						<img src={item} alt='product images' />
 					</SwiperSlide>

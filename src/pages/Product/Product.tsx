@@ -15,7 +15,6 @@ import { ShoppingCart, ArrowBack } from '@mui/icons-material';
 import { Link, useParams } from 'react-router-dom';
 import { formatCurrency } from '../../utils/formatCurrency';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Product } from '../../types';
 
 export default function Product() {
 	const imagesDefault = [imagePlaceholder];
@@ -77,7 +76,7 @@ export default function Product() {
 							}}
 						>
 							<ProductGallery
-								images={[product?.image] ? [product?.image] : imagesDefault}
+								images={[product.image] ? [product.image] : imagesDefault}
 							/>
 						</Box>
 					</Grid>
