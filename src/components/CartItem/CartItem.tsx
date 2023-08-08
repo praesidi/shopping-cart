@@ -11,10 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import getNumberOfProducts from '../../utils/getNumberOfProducts';
 
 export default function CartItem({ product }: { product: Product }) {
-	const products = useSelector(productsInCart);
 	const dispatch = useDispatch();
-	const quantity = getNumberOfProducts(products, product.id);
-	// console.log(products);
+	const quantity = getNumberOfProducts(useSelector(productsInCart), product.id);
 
 	if (quantity) {
 		return (

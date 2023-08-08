@@ -11,8 +11,6 @@ import useFetch from '../../hooks/useFetch';
 import sortByPrice from '../../utils/sortByPrice';
 import { Product } from '../../types';
 
-// TODO: do performance tests to improve UX
-
 export default function Shop() {
 	const [sortBy, setSortBy] = useState('');
 	const [currentCategory, setCurrentCategory] = useState('all');

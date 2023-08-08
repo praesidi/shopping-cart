@@ -19,8 +19,6 @@ import {
 } from '../../store/shoppingCart/cartDisplaySlice';
 import { productsInCart } from '../../store/shoppingCart/cartProductsSlice';
 
-// FIXME: clicking outside of cart doesn't close it
-
 export default function Cart() {
 	const anchor = 'right';
 	const isCartOpen = useSelector(isOpen);

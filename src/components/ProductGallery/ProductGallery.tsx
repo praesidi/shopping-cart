@@ -10,7 +10,6 @@ import styles from './ProductGallery.module.sass';
 export default function ProductGallery(props: any) {
 	const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
-	// used inline styling for height bcs swiper resets the values for some reason
 	return (
 		<>
 			<Swiper

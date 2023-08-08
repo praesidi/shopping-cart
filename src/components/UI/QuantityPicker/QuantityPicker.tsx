@@ -1,5 +1,4 @@
 import styles from './QuantityPicker.module.sass';
-import { Product } from '../../../types';
 
 interface QuantityPicker {
 	onAdd: any;

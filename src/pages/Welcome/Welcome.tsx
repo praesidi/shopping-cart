@@ -1,13 +1,8 @@
-// import { Link } from 'react-router-dom';
 import { Button, Container, Box, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import backgroundImage from '../../assets/images/welcome.jpeg';
-
-// first container contains the background image
-// second contains backdrop filters for it
-// TODO: fix blank space on mobiles
 
 export default function Welcome() {
 	return (
