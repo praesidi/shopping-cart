@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, Middleware, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '../../types';
 
 interface CartState {
@@ -33,3 +33,15 @@ export const { addToCart, removeFromCart } = cartProductsSlice.actions;
 export const productsInCart = (state: any) => state.cartProducts.productsInCart;
 
 export default cartProductsSlice.reducer;
+
+export const localStorageMiddleware: Middleware =
+	(storeAPI) => (next) => (action) => {
+		const result = next(action);
+
+		// Save the updated cart state to local storage
+		if (action.type === 'cart/addItem' || action.type === 'cart/removeItem') {
+			localStorage.setItem('cart', JSON.stringify(storeAPI.getState().cart));
+		}
+
+		return result;
+	};
