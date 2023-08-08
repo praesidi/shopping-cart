@@ -1,4 +1,4 @@
-import { ICartItem, IProduct } from '../../types';
+import { ICartItem } from '../../types';
 import { Box, Typography } from '@mui/material';
 import QuantityPicker from '../UI/QuantityPicker/QuantityPicker';
 import { formatCurrency } from '../../utils/formatCurrency';

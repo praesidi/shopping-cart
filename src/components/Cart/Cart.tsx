@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { ArrowBack, ShoppingCartCheckout } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { IProduct, ICartItem } from '../../types';
+import { ICartItem } from '../../types';
 import CartItem from '../CartItem/CartItem';
 import image from '../../assets/images/empty-cart.png';
 import { formatCurrency } from '../../utils/formatCurrency';

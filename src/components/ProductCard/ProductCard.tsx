@@ -10,7 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { formatCurrency } from '../../utils/formatCurrency';
-import { ICartItem, IProduct } from '../../types';
+import { ICartItem } from '../../types';
 import { openCart } from '../../store/shoppingCart/cartDisplaySlice';
 import { addToCart } from '../../store/shoppingCart/cartProductsSlice';
 import { useDispatch } from 'react-redux';
