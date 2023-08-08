@@ -10,13 +10,14 @@ import {
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { formatCurrency } from '../../utils/formatCurrency';
-import { Product } from '../../types';
+import { ICartItem, IProduct } from '../../types';
 import { openCart } from '../../store/shoppingCart/cartDisplaySlice';
 import { addToCart } from '../../store/shoppingCart/cartProductsSlice';
 import { useDispatch } from 'react-redux';
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ cartItem }: { cartItem: ICartItem }) {
 	const dispatch = useDispatch();
+	const product = cartItem.product;
 
 	return (
 		<Card
@@ -86,7 +87,7 @@ export default function ProductCard({ product }: { product: Product }) {
 					color='secondary'
 					fullWidth={true}
 					onClick={() => {
-						dispatch(addToCart(product));
+						dispatch(addToCart(cartItem));
 						dispatch(openCart());
 					}}
 					endIcon={<ShoppingCartIcon />}

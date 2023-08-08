@@ -1,6 +1,7 @@
-export default function getNumberOfProducts(
-	products: any[],
-	productID: number | string
-) {
-	return products.filter((product: any) => product.id === productID).length;
+import { ICartItem } from '../types';
+
+export default function getNumberOfProducts(items: ICartItem[]) {
+	return items.reduce((acc: number, item: ICartItem) => {
+		return acc + item.quantity;
+	}, 0);
 }

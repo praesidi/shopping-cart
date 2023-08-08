@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { ArrowBack, ShoppingCartCheckout } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { Product } from '../../types';
+import { IProduct, ICartItem } from '../../types';
 import CartItem from '../CartItem/CartItem';
 import image from '../../assets/images/empty-cart.png';
 import { formatCurrency } from '../../utils/formatCurrency';
@@ -17,12 +17,12 @@ import {
 	closeCart,
 	isOpen,
 } from '../../store/shoppingCart/cartDisplaySlice';
-import { productsInCart } from '../../store/shoppingCart/cartProductsSlice';
+import { cartItems } from '../../store/shoppingCart/cartProductsSlice';
 
 export default function Cart() {
 	const anchor = 'right';
 	const isCartOpen = useSelector(isOpen);
-	const products = useSelector(productsInCart);
+	const products = useSelector(cartItems);
 	const dispatch = useDispatch();
 
 	return (
@@ -61,7 +61,7 @@ export default function Cart() {
 				{products.length < 1 ? (
 					<EmptyCart />
 				) : (
-					<FilledCart products={products} />
+					<FilledCart cartItems={products} />
 				)}
 			</SwipeableDrawer>
 		</Fragment>
@@ -99,8 +99,7 @@ function EmptyCart() {
 	);
 }
 
-function FilledCart({ products }: { products: Product[] }) {
-	console.log(products);
+function FilledCart({ cartItems }: { cartItems: ICartItem[] }) {
 	return (
 		<>
 			<Box
@@ -113,8 +112,8 @@ function FilledCart({ products }: { products: Product[] }) {
 					overflowY: 'auto',
 				}}
 			>
-				{[...new Set(products)].map((product: Product) => (
-					<CartItem product={product} key={product.id} />
+				{cartItems.map((cartItem: ICartItem) => (
+					<CartItem cartItem={cartItem} key={cartItem.product.id} />
 				))}
 			</Box>
 			<Box mt={'auto'}>
@@ -127,7 +126,11 @@ function FilledCart({ products }: { products: Product[] }) {
 				>
 					Total:{' '}
 					{formatCurrency(
-						products.reduce((acc: number, curr: Product) => acc + curr.price, 0)
+						cartItems.reduce(
+							(acc: number, curr: ICartItem) =>
+								acc + curr.product.price * curr.quantity,
+							0
+						)
 					)}
 				</Typography>
 				<Button

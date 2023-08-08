@@ -1,20 +1,17 @@
-import { Product } from '../../types';
+import { ICartItem, IProduct } from '../../types';
 import { Box, Typography } from '@mui/material';
 import QuantityPicker from '../UI/QuantityPicker/QuantityPicker';
 import { formatCurrency } from '../../utils/formatCurrency';
 import {
-	productsInCart,
 	addToCart,
 	removeFromCart,
 } from '../../store/shoppingCart/cartProductsSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import getNumberOfProducts from '../../utils/getNumberOfProducts';
+import { useDispatch } from 'react-redux';
 
-export default function CartItem({ product }: { product: Product }) {
+export default function CartItem({ cartItem }: { cartItem: ICartItem }) {
 	const dispatch = useDispatch();
-	const quantity = getNumberOfProducts(useSelector(productsInCart), product.id);
 
-	if (quantity) {
+	if (cartItem.quantity) {
 		return (
 			// Container
 			<Box
@@ -38,7 +35,7 @@ export default function CartItem({ product }: { product: Product }) {
 						height: '100%',
 						width: '15%',
 					}}
-					src={product.image}
+					src={cartItem.product.image}
 					alt='product image'
 					loading='lazy'
 				/>
@@ -62,10 +59,10 @@ export default function CartItem({ product }: { product: Product }) {
 							whiteSpace: 'nowrap',
 						}}
 					>
-						{product.title}
+						{cartItem.product.title}
 					</Typography>
 					<Typography variant='h5' fontSize={14}>
-						{formatCurrency(product.price)}
+						{formatCurrency(cartItem.product.price)}
 					</Typography>
 				</Box>
 				{/* Total & Quantity Picker */}
@@ -83,14 +80,14 @@ export default function CartItem({ product }: { product: Product }) {
 					}}
 				>
 					<Typography>
-						Total: {formatCurrency(product.price * quantity)}
+						Total: {formatCurrency(cartItem.product.price * cartItem.quantity)}
 					</Typography>
 					<QuantityPicker
 						min={0}
 						max={9}
-						value={quantity}
-						onAdd={() => dispatch(addToCart(product))}
-						onRemove={() => dispatch(removeFromCart(product))}
+						value={cartItem.quantity}
+						onAdd={() => dispatch(addToCart(cartItem))}
+						onRemove={() => dispatch(removeFromCart(cartItem))}
 					/>
 				</Box>
 			</Box>

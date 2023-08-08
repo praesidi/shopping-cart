@@ -9,13 +9,13 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import useFetch from '../../hooks/useFetch';
 import sortByPrice from '../../utils/sortByPrice';
-import { Product } from '../../types';
+import { IProduct } from '../../types';
 
 export default function Shop() {
 	const [sortBy, setSortBy] = useState('');
 	const [currentCategory, setCurrentCategory] = useState('all');
 	const fetchURL = useRef('');
-	const sortedProducts = useRef<Product[]>();
+	const sortedProducts = useRef<IProduct[]>();
 
 	const { data: categories } = useFetch(
 		'https://fakestoreapi.com/products/categories'
@@ -114,7 +114,7 @@ export default function Shop() {
 										alignItems='center'
 										key={product?.id}
 									>
-										<ProductCard product={product} />
+										<ProductCard cartItem={{ product: product, quantity: 1 }} />
 									</Grid>
 								);
 							}
