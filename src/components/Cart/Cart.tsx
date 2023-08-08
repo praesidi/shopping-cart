@@ -110,7 +110,7 @@ function FilledCart({ products }: { products: Product[] }) {
 					alignItems: 'center',
 					justifyContent: 'flex-start',
 					gap: '12px',
-					overflow: 'scroll',
+					overflowY: 'auto',
 				}}
 			>
 				{[...new Set(products)].map((product: Product) => (
@@ -122,7 +122,8 @@ function FilledCart({ products }: { products: Product[] }) {
 					variant='h3'
 					fontSize={'1.5rem'}
 					color={'#545456'}
-					mb={'20px'}
+					mb={'24px'}
+					pt={'24px'}
 				>
 					Total:{' '}
 					{formatCurrency(
