@@ -17,7 +17,13 @@ export const cartProductsSlice = createSlice({
 			state.productsInCart.push(action.payload);
 		},
 		removeFromCart: (state, action: PayloadAction<Product>) => {
-			state.productsInCart.filter((product) => product !== action.payload);
+			console.log(action.payload);
+			for (let i = 0; i < state.productsInCart.length; i++) {
+				if (state.productsInCart[i].id === action.payload.id) {
+					state.productsInCart.splice(i, 1);
+					break;
+				}
+			}
 		},
 	},
 });

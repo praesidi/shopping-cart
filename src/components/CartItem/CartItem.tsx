@@ -2,12 +2,19 @@ import { Product } from '../../types';
 import { Box, Typography } from '@mui/material';
 import QuantityPicker from '../UI/QuantityPicker/QuantityPicker';
 import { formatCurrency } from '../../utils/formatCurrency';
-import { useState } from 'react';
-
-// TODO: reconsider widths
+import {
+	productsInCart,
+	addToCart,
+	removeFromCart,
+} from '../../app/features/cartProductsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import getNumberOfProducts from '../../utils/getNumberOfProducts';
 
 export default function CartItem({ product }: { product: Product }) {
-	const [quantity, setQuantity] = useState(1);
+	const products = useSelector(productsInCart);
+	const dispatch = useDispatch();
+	const quantity = getNumberOfProducts(products, product.id);
+	// console.log(products);
 
 	if (quantity) {
 		return (
@@ -84,7 +91,8 @@ export default function CartItem({ product }: { product: Product }) {
 						min={0}
 						max={9}
 						value={quantity}
-						setValue={setQuantity}
+						onAdd={() => dispatch(addToCart(product))}
+						onRemove={() => dispatch(removeFromCart(product))}
 					/>
 				</Box>
 			</Box>
