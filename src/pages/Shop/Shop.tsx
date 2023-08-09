@@ -60,19 +60,17 @@ export default function Shop() {
 				flexDirection: 'column',
 				alignItems: 'center',
 			}}
-			maxWidth={false}
+			maxWidth={'xl'}
 		>
 			<Header isDark={false} />
 			<Container
 				sx={{
 					display: 'flex',
 					justifyContent: 'space-evenly',
-					padding: '0 24px',
 					margin: '40px 0 80px',
 					flexDirection: { xs: 'column', sm: 'row' },
 					flexWrap: { xs: 'wrap', sm: 'nowrap' },
 				}}
-				disableGutters
 				maxWidth={false}
 			>
 				{/* Sidebar */}

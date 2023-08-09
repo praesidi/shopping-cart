@@ -26,44 +26,47 @@ export default function Welcome() {
 					backdropFilter: 'blur(8px) brightness(0.5)',
 				}}
 				maxWidth={false}
+				disableGutters
 			>
-				<Header isDark={true} />
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						justifyContent: 'center',
-						width: '100%',
-						padding: '15px 0',
-						margin: '64px 0',
-					}}
-				>
-					<Typography
-						variant='h1'
+				<Container maxWidth={'xl'}>
+					<Header isDark={true} />
+					<Box
 						sx={{
-							fontFamily: "'Monoton', sans-serif",
-							textAlign: 'center',
-							fontSize: { xs: '3rem', sm: '4rem' },
-							wordSpacing: '0.3rem',
-							marginBottom: '64px',
-							lineHeight: '1.4em',
-							padding: '0 16px',
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'center',
+							width: '100%',
+							padding: '15px 0',
+							margin: '64px 0',
 						}}
 					>
-						Welcome <br /> to the Kessoku Band Store
-					</Typography>
-					<Link to='/products'>
-						<Button
-							variant='outlined'
-							fullWidth={false}
-							sx={{ width: '280px' }}
-							endIcon={<ArrowForwardIcon />}
+						<Typography
+							variant='h1'
+							sx={{
+								fontFamily: "'Monoton', sans-serif",
+								textAlign: 'center',
+								fontSize: { xs: '3rem', sm: '4rem' },
+								wordSpacing: '0.3rem',
+								marginBottom: '64px',
+								lineHeight: '1.4em',
+								padding: '0 16px',
+							}}
 						>
-							Shop Now
-						</Button>
-					</Link>
-				</Box>
+							Welcome <br /> to the Kessoku Band Store
+						</Typography>
+						<Link to='/products'>
+							<Button
+								variant='outlined'
+								fullWidth={false}
+								sx={{ width: '280px' }}
+								endIcon={<ArrowForwardIcon />}
+							>
+								Shop Now
+							</Button>
+						</Link>
+					</Box>
+				</Container>
 			</Container>
 		</Container>
 	);

@@ -53,7 +53,6 @@ export default function Product() {
 		<Container
 			sx={{
 				width: '100%',
-				maxWidth: '1400px',
 				minHeight: '100vh',
 				backgroundColor: 'whitesmoke',
 				color: '#6f6e6e',
@@ -61,7 +60,7 @@ export default function Product() {
 				flexDirection: 'column',
 				alignItems: 'center',
 			}}
-			maxWidth={false}
+			maxWidth={'xl'}
 		>
 			<Header isDark={false} />
 			<Container
@@ -69,10 +68,8 @@ export default function Product() {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'space-evenly',
-					padding: '0 24px',
 					marginBottom: '64px',
 				}}
-				disableGutters
 				maxWidth={false}
 			>
 				<Box sx={{ marginBottom: '12px' }}>

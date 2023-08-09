@@ -17,7 +17,7 @@ export default function Error() {
 				alignItems: 'center',
 				gap: '20px',
 			}}
-			maxWidth={false}
+			maxWidth={'xl'}
 		>
 			<Box component='img' src={image} height={250} alt='error illustration' />
 			<Typography variant='h2' textAlign={'center'}>
