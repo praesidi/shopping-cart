@@ -20,26 +20,48 @@ import {
 import { cartItems } from '../../store/shoppingCart/cartProductsSlice';
 
 export default function Cart() {
-	const anchor = 'right';
+	const IOS =
+		typeof navigator !== undefined &&
+		/iPad|iPhone|iPod/.test(navigator.userAgent);
 	const isCartOpen = useSelector(isOpen);
 	const products = useSelector(cartItems);
 	const dispatch = useDispatch();
 
+	const toggleDrawer =
+		(open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+			if (
+				event &&
+				event.type === 'keydown' &&
+				((event as React.KeyboardEvent).key === 'Tab' ||
+					(event as React.KeyboardEvent).key === 'Shift')
+			) {
+				return;
+			}
+
+			if (open) {
+				dispatch(openCart());
+			} else {
+				dispatch(closeCart());
+			}
+		};
+
 	return (
 		<Fragment>
 			<SwipeableDrawer
-				anchor={anchor}
+				anchor={'right'}
 				open={isCartOpen}
-				onClose={() => dispatch(openCart())}
-				onOpen={() => dispatch(closeCart())}
+				onClose={toggleDrawer(false)}
+				onOpen={toggleDrawer(true)}
 				PaperProps={{
 					sx: { width: { xs: '100%', sm: '560px' }, p: '16px' },
 				}}
+				disableBackdropTransition={!IOS}
+				disableDiscovery={IOS}
 			>
 				<Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
 					{' '}
 					<IconButton
-						onClick={() => dispatch(closeCart())}
+						onClick={toggleDrawer(false)}
 						aria-label='delete'
 						size='medium'
 					>
