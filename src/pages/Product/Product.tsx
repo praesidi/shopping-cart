@@ -15,10 +15,14 @@ import { ShoppingCart, ArrowBack } from '@mui/icons-material';
 import { Link, useParams } from 'react-router-dom';
 import { formatCurrency } from '../../utils/formatCurrency';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { openCart } from '../../store/shoppingCart/cartDisplaySlice';
+import { addToCart } from '../../store/shoppingCart/cartProductsSlice';
+import { useDispatch } from 'react-redux';
 
 export default function Product() {
 	const imagesDefault = [imagePlaceholder];
 	const params = useParams();
+	const dispatch = useDispatch();
 
 	const {
 		data: product,
@@ -67,7 +71,6 @@ export default function Product() {
 					justifyContent: 'space-evenly',
 					padding: '0 24px',
 					marginBottom: '64px',
-					// minHeight: '100%',
 				}}
 				disableGutters
 				maxWidth={false}
@@ -170,6 +173,10 @@ export default function Product() {
 									variant='outlined'
 									color='secondary'
 									fullWidth
+									onClick={() => {
+										dispatch(addToCart({ product: product, quantity: 1 }));
+										dispatch(openCart());
+									}}
 									endIcon={<ShoppingCart />}
 								>
 									Add to cart
