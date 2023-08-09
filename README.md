@@ -3,7 +3,7 @@
 ![page screenshot](src/assets/images/welcome-page-screenshot.png)
 ![page screenshot](src/assets/images/main-page-screenshot.png)
 
-<h3 align="center"><a href="https://shopping-cart-praesidi.vercel.app/">DEMO</a></h2>
+<h3 align="center"><a href="https://shopping-cart-blue-psi.vercel.app/">DEMO</a></h2>
 
 ## About the project
 
