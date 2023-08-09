@@ -41,7 +41,7 @@ export default function Shop() {
 	return (
 		<Container
 			sx={{
-				width: '100vw',
+				width: '100%',
 				minHeight: '100vh',
 				backgroundColor: 'whitesmoke',
 				color: '#6f6e6e',

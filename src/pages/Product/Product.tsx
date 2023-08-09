@@ -37,7 +37,7 @@ export default function Product() {
 	return (
 		<Container
 			sx={{
-				width: '100vw',
+				width: '100%',
 				maxWidth: '1400px',
 				minHeight: '100vh',
 				backgroundColor: 'whitesmoke',

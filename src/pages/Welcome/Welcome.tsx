@@ -8,7 +8,7 @@ export default function Welcome() {
 	return (
 		<Container
 			sx={{
-				width: '100vw',
+				width: '100%',
 				height: '100%',
 				bgcolor: '#BBD2C5',
 				background: 'linear-gradient(to right, #292E49, #536976, #BBD2C5)',
