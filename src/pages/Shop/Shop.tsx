@@ -35,7 +35,18 @@ export default function Shop() {
 		sortedProducts.current = sortByPrice(false, products);
 	}
 
-	if (isLoading) return <CircularProgress color='secondary' size={80} />;
+	if (isLoading)
+		return (
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<CircularProgress color='secondary' size={80} />
+			</Box>
+		);
 	if (error) return <ErrorMessage />;
 
 	return (

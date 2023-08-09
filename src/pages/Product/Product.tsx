@@ -30,7 +30,18 @@ export default function Product() {
 		error: string | null;
 	} = useFetch(`https://fakestoreapi.com/products/${params.id}`);
 
-	if (isLoading) return <CircularProgress color='secondary' size={80} />;
+	if (isLoading)
+		return (
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<CircularProgress color='secondary' size={80} />
+			</Box>
+		);
 
 	if (error) return <ErrorMessage />;
 
