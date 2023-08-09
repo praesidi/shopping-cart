@@ -59,6 +59,9 @@ export default function ProductCard({ cartItem }: { cartItem: ICartItem }) {
 							margin: 0,
 							fontSize: '1.3rem',
 							overflow: 'hidden',
+							display: '-webkit-box',
+							WebkitLineClamp: 4,
+							WebkitBoxOrient: 'vertical',
 						}}
 					>
 						{product.title}
