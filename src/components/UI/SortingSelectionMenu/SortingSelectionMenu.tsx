@@ -24,7 +24,7 @@ export default function SortingSelectionMenu({
 				<em>Sort By</em>
 			</MenuItem>
 			<MenuItem value='from cheap'>Price (from cheap)</MenuItem>
-			<MenuItem value='from expansive'>Price (from expansive)</MenuItem>
+			<MenuItem value='from expansive'>Price (from expensive)</MenuItem>
 		</Select>
 	);
 }
