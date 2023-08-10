@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import getNumberOfProducts from '../../utils/getNumberOfProducts';
 
 export default function Header({ isDark }: { isDark: boolean }) {
-	const inputStyling = isDark
-		? { style: { color: 'whitesmoke' } }
-		: { style: { color: '#6f6e6e' } };
+	// const inputStyling = isDark
+	// 	? { style: { color: 'whitesmoke' } }
+	// 	: { style: { color: '#6f6e6e' } };
 
 	const dispatch = useDispatch();
 	const products = useSelector(cartItems);
