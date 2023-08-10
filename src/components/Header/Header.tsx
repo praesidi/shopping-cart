@@ -1,4 +1,5 @@
-import { Input, Box } from '@mui/material';
+// import { Input, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import CartButton from '../../components/UI/CartButton/CartButton';
 import Logo from '../../components/UI/Logo/Logo';
 import { openCart, closeCart } from '../../store/shoppingCart/cartDisplaySlice';
@@ -49,14 +50,14 @@ export default function Header({ isDark }: { isDark: boolean }) {
 			</Box>
 			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 				<Box component={'form'} sx={{ width: { xs: '160px', sm: '240px' } }}>
-					<Input
+					{/* <Input
 						placeholder='Search...'
 						color='secondary'
 						fullWidth
 						inputProps={{
 							...inputStyling,
 						}}
-					/>
+					/> */}
 				</Box>
 				<CartButton
 					size='small'
